@@ -1,0 +1,529 @@
+// InteropMed: Interoperability Standards & R&D Platform
+// B2B company focused on standards, libraries, and documentation
+// Prisma schema for PostgreSQL (Neon)
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// =====================
+// Company & Organization
+// =====================
+
+model Company {
+  id                String    @id @default(cuid())
+  name              String    @unique
+  slug              String    @unique
+  description       String?   @db.Text
+  logo              String?   // URL to logo
+  website           String?
+  email             String?
+  phone             String?
+  
+  // Address
+  street            String?
+  city              String?
+  state             String?
+  zipCode           String?
+  country           String?   @default("US")
+  
+  // Company Info
+  founded           Int?      // Year founded
+  headcount         Int?      // Number of employees
+  headquarters      String?
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  // Relations
+  departments       Department[]
+  employees         Employee[]
+  products          Product[]
+  standards         Standard[]
+  articles          Article[]
+  documentation     Documentation[]
+  partnerships      Partnership[]
+  useCases          UseCase[]
+  auditLogs         AuditLog[] @relation("CompanyAuditLogs")
+}
+
+// =====================
+// Company Structure
+// =====================
+
+model Department {
+  id                String    @id @default(cuid())
+  name              String
+  slug              String
+  description       String?
+  
+  companyId         String
+  company           Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  
+  parentDeptId      String?
+  parentDept        Department? @relation("DeptHierarchy", fields: [parentDeptId], references: [id], onDelete: SetNull)
+  subDepts          Department[] @relation("DeptHierarchy")
+  
+  manager           Employee? @relation("DepartmentManager", fields: [managerId], references: [id], onDelete: SetNull)
+  managerId         String?
+  
+  budget            Float?
+  headcount         Int?
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  // Relations
+  employees         Employee[]
+  teams             Team[]
+  
+  @@unique([slug, companyId])
+}
+
+model Team {
+  id                String    @id @default(cuid())
+  name              String
+  description       String?
+  
+  departmentId      String
+  department        Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  
+  lead              Employee? @relation("TeamLead", fields: [leadId], references: [id], onDelete: SetNull)
+  leadId            String?
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  // Relations
+  members           TeamMember[]
+}
+
+model Employee {
+  id                String    @id @default(cuid())
+  firstName         String
+  lastName          String
+  email             String    @unique
+  phone             String?
+  
+  // Employment
+  employeeId        String    @unique
+  title             String
+  startDate         DateTime
+  endDate           DateTime?
+  status            String    @default("active") // "active", "on_leave", "inactive"
+  
+  // Department & Team
+  departmentId      String
+  department        Department @relation(fields: [departmentId], references: [id])
+  
+  companyId         String
+  company           Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  
+  // Skills
+  skills            String[]
+  expertise         String[]
+  bio               String?   @db.Text
+  profileImage      String?   // URL to profile photo
+  
+  // Permissions
+  role              String    @default("member") // "admin", "manager", "member"
+  permissions       String[]
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  // Relations
+  managedDepts      Department[] @relation("DepartmentManager")
+  managedTeams      Team[] @relation("TeamLead")
+  teamMemberships   TeamMember[]
+  articles          Article[]
+  documentation     Documentation[]
+}
+
+model TeamMember {
+  id                String    @id @default(cuid())
+  
+  teamId            String
+  team              Team      @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  
+  employeeId        String
+  employee          Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  
+  joinDate          DateTime  @default(now())
+  role              String?   // "lead", "senior", "junior", "contractor"
+  allocation        Float     @default(100) // % of time allocated
+  
+  @@unique([teamId, employeeId])
+}
+
+// =====================
+// Standards & Specifications
+// =====================
+
+model Standard {
+  id                String    @id @default(cuid())
+  name              String    // "FHIR", "HL7 v2", "HL7 v3", "Direct Protocol", "DICOM", "CDA"
+  slug              String    @unique
+  description       String?   @db.Text
+  
+  companyId         String
+  company           Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  
+  // Standard Info
+  standardBody      String?   // "HL7", "DICOM", "W3C", "RFC", etc.
+  officialUrl       String?   // Link to official standard
+  category          String    // "messaging", "api", "document", "imaging", "other"
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  // Relations
+  versions          StandardVersion[]
+  products          Product[]
+  
+  @@unique([name, companyId])
+}
+
+model StandardVersion {
+  id                String    @id @default(cuid())
+  
+  standardId        String
+  standard          Standard  @relation(fields: [standardId], references: [id], onDelete: Cascade)
+  
+  version           String    // "2.5", "3.0", "R4", "R5", etc.
+  releaseDate       DateTime?
+  retirementDate    DateTime? // When this version is deprecated
+  status            String    @default("current") // "current", "deprecated", "draft"
+  
+  documentation     String?   @db.Text
+  downloadUrl       String?
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  // Relations
+  implementationGuides ImplementationGuide[]
+  
+  @@unique([standardId, version])
+}
+
+// =====================
+// Products & Services
+// =====================
+
+model Product {
+  id                String    @id @default(cuid())
+  name              String
+  slug              String    @unique
+  description       String?   @db.Text
+  logo              String?   // URL
+  
+  companyId         String
+  company           Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  
+  // Product Details
+  type              String    // "library", "sdk", "tool", "service", "api", "framework"
+  category          String    // "validation", "transformation", "integration", "gateway", "other"
+  version           String    @default("1.0.0")
+  status            String    @default("active") // "active", "deprecated", "beta", "archived"
+  
+  // Distribution
+  repositoryUrl     String?   // GitHub, etc.
+  packageName       String?   // npm, PyPI, Maven, etc.
+  packageManager    String?   // "npm", "pip", "maven", "nuget", etc.
+  
+  // Standards Support
+  standardsId       String[]
+  standards         Standard[]
+  
+  documentation    String?   @db.Text
+  apiDocs           String?   // URL to API documentation
+  
+  pricing           String?   // "open_source", "free", "paid", "freemium"
+  license           String?   // "MIT", "Apache-2.0", "GPL", etc.
+  
+  gitHubStars       Int       @default(0)
+  downloads         Int       @default(0)
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  // Relations
+  features          Feature[]
+  useCases          UseCase[]
+  implementationGuides ImplementationGuide[] @relation("ImplementationGuideToProduct")
+  
+  @@unique([slug, companyId])
+}
+
+model Feature {
+  id                String    @id @default(cuid())
+  
+  productId         String
+  product           Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  name              String
+  description       String?   @db.Text
+  
+  createdAt         DateTime  @default(now())
+}
+
+// =====================
+// Use Cases & Solutions
+// =====================
+
+model UseCase {
+  id                String    @id @default(cuid())
+  title             String
+  slug              String    @unique
+  description       String?   @db.Text
+  
+  companyId         String
+  company           Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  
+  // Details
+  industry          String?   // "healthcare", "finance", "government", etc.
+  problem           String?   @db.Text
+  solution          String?   @db.Text
+  outcome           String?   @db.Text
+  
+  // Association
+  productsId        String[]
+  products          Product[]
+  standardsId       String[]
+  
+  // Content
+  articleUrl        String?
+  videoUrl          String?
+  caseStudyUrl      String?
+  
+  status            String    @default("published") // "draft", "published", "archived"
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  // Relations
+  testimonials      Testimonial[]
+}
+
+model Testimonial {
+  id                String    @id @default(cuid())
+  
+  useCaseId         String
+  useCase           UseCase   @relation(fields: [useCaseId], references: [id], onDelete: Cascade)
+  
+  authorName        String
+  authorTitle       String?
+  authorCompany     String?
+  authorImage       String?
+  
+  quote             String    @db.Text
+  rating            Int?      // 1-5 stars
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+// =====================
+// Documentation & Content
+// =====================
+
+model Documentation {
+  id                String    @id @default(cuid())
+  title             String
+  slug              String    @unique
+  content           String    @db.Text
+  
+  companyId         String
+  company           Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  
+  authorId          String
+  author            Employee  @relation(fields: [authorId], references: [id])
+  
+  // Doc Type
+  type              String    // "guide", "api_reference", "tutorial", "faq", "specification"
+  category          String    // "getting_started", "advanced", "integration", "troubleshooting"
+  
+  // Metadata
+  tags              String[]
+  status            String    @default("published") // "draft", "published", "archived"
+  version           String    @default("1.0")
+  order             Int       @default(0) // For ordering in navigation
+  
+  // Related
+  parentDocId       String?
+  parentDoc         Documentation? @relation("DocHierarchy", fields: [parentDocId], references: [id])
+  childDocs         Documentation[] @relation("DocHierarchy")
+  
+  // SEO
+  metaDescription   String?
+  metaKeywords      String[]
+  
+  viewCount         Int       @default(0)
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  publishedAt       DateTime?
+  
+  @@unique([slug, companyId])
+}
+
+model ImplementationGuide {
+  id                String    @id @default(cuid())
+  title             String
+  slug              String
+  description       String?   @db.Text
+  
+  companyId         String? // If multi-tenant
+  
+  // Links
+  standardVersionId String
+  standardVersion   StandardVersion @relation(fields: [standardVersionId], references: [id], onDelete: Cascade)
+  
+  productId         String?
+  product           Product? @relation("ImplementationGuideToProduct", fields: [productId], references: [id], onDelete: SetNull)
+  
+  // Content
+  content           String?   @db.Text // Main guide content
+  exampleCode       String?   @db.Text // Code examples
+  downloadUrl       String?   // PDF or other formats
+  
+  // Metadata
+  status            String    @default("draft") // "draft", "published", "deprecated"
+  version           String    @default("1.0")
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  publishedAt       DateTime?
+  
+  @@unique([slug, standardVersionId])
+}
+
+// =====================
+// Content & Articles
+// =====================
+
+model Article {
+  id                String    @id @default(cuid())
+  title             String
+  slug              String    @unique
+  excerpt           String?   @db.Text
+  content           String    @db.Text
+  
+  companyId         String
+  company           Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  
+  authorId          String
+  author            Employee  @relation(fields: [authorId], references: [id])
+  
+  // Article Type
+  type              String    // "blog", "whitepaper", "case_study", "research", "news"
+  category          String    // "standards", "development", "adoption", "industry"
+  
+  // Metadata
+  tags              String[]
+  featuredImage     String?   // URL
+  status            String    @default("draft") // "draft", "published", "archived"
+  
+  // Engagement
+  viewCount         Int       @default(0)
+  likes             Int       @default(0)
+  comments          ArticleComment[]
+  
+  // SEO
+  metaDescription   String?
+  metaKeywords      String[]
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  publishedAt       DateTime?
+  
+  @@unique([slug, companyId])
+}
+
+model ArticleComment {
+  id                String    @id @default(cuid())
+  
+  articleId         String
+  article           Article   @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  
+  authorName        String
+  authorEmail       String
+  content           String    @db.Text
+  
+  status            String    @default("pending") // "pending", "approved", "rejected"
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+// =====================
+// Partnerships & Relationships
+// =====================
+
+model Partnership {
+  id                String    @id @default(cuid())
+  name              String
+  slug              String    @unique
+  description       String?   @db.Text
+  
+  companyId         String
+  company           Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  
+  // Partner Info
+  partnerName       String
+  partnerLogo       String?   // URL
+  partnerWebsite    String?
+  partnerType       String    // "vendor", "reseller", "integrator", "standards_body", "academic", "other"
+  
+  // Relationship
+  status            String    @default("active") // "active", "pending", "inactive", "ended"
+  type              String[]  // e.g. ["integration", "certification", "resale", "co-marketing"]
+  
+  // Contact
+  contactName       String?
+  contactEmail      String?
+  contactPhone      String?
+  
+  // Dates
+  startDate         DateTime?
+  endDate           DateTime?
+  renewalDate       DateTime?
+  
+  // Details
+  terms             String?   @db.Text
+  notes             String?   @db.Text
+  
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  @@unique([slug, companyId])
+}
+
+// =====================
+// Audit & System
+// =====================
+
+model AuditLog {
+  id                String    @id @default(cuid())
+  
+  companyId         String
+  company           Company   @relation("CompanyAuditLogs", fields: [companyId], references: [id], onDelete: Cascade)
+  
+  action            String    // "create", "update", "delete", "publish", "download"
+  entityType        String    // "product", "article", "standard", "employee", etc.
+  entityId          String
+  
+  employeeId        String?
+  changes           String?   @db.Text // JSON of what changed
+  
+  ipAddress         String?
+  userAgent         String?
+  
+  createdAt         DateTime  @default(now())
+}
