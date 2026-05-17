@@ -14,7 +14,7 @@ const packages = [
     bestFor: 'Digital health teams and specialty clinics validating one workflow.',
     includes: [
       'Architecture and data-flow review',
-      'One priority workflow mapped to FHIR resources',
+      'One priority workflow mapped to HL7 FHIR resources',
       'Initial SHIN configuration and sandbox deployment',
       'Validation rules and exception review model',
     ],
@@ -26,7 +26,7 @@ const packages = [
     includes: [
       'Multiple source and destination integrations',
       'Production-grade access, audit, and monitoring model',
-      'FHIR profile, terminology, and identifier governance',
+      'HL7 FHIR profile, terminology, and identifier governance',
       'Implementation runbook and operational handoff',
     ],
   },
@@ -44,7 +44,7 @@ const packages = [
 ]
 
 const buyers = [
-  'Digital health companies that need reliable EHR or FHIR integration',
+  'Digital health companies that need reliable EHR or HL7 FHIR integration',
   'Specialty clinical networks coordinating referrals, diagnostics, and care teams',
   'Healthcare software vendors adding interoperability to existing products',
   'Regional programs modernizing legacy interfaces into governed APIs',
@@ -120,7 +120,7 @@ export default function ImplementationPage() {
                     Start with an architecture review.
                   </h2>
                   <p className="mt-3 text-base leading-7 text-slate-600 dark:text-slate-300">
-                    We will identify the first workflow, source systems, FHIR resources, integration risks, and the right package for your rollout.
+                    We will identify the first workflow, source systems, HL7 FHIR resources, integration risks, and the right package for your rollout.
                   </p>
                 </div>
                 <Link

@@ -18,7 +18,7 @@ export default function TechnologyPage() {
         {/* Hero */}
         <HeroSection
           headline="Enterprise Architecture for Healthcare Data"
-          subheadline="SHIN represents a fundamental reimagining of health data middleware, built from the ground up with FHIR, PostgreSQL, and Python to handle the complexity of modern clinical networks."
+          subheadline="SHIN represents a fundamental reimagining of health data middleware, built from the ground up with HL7 FHIR, PostgreSQL, and Python to handle the complexity of modern clinical networks."
           cta="/contact"
           ctaText="Download Architecture Whitepaper"
           ctaHref="/contact"
@@ -47,7 +47,7 @@ export default function TechnologyPage() {
                   Data Layer: PostgreSQL + JSONB
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 mb-6">
-                  FHIR resources are deeply nested, unstructured data. Traditional relational schemas force painful normalization. SHIN uses PostgreSQL&apos;s JSONB to store nested FHIR resources while maintaining ACID guarantees and powerful query capabilities.
+                  HL7 FHIR resources are deeply nested, unstructured data. Traditional relational schemas force painful normalization. SHIN uses PostgreSQL&apos;s JSONB to store nested FHIR resources while maintaining ACID guarantees and powerful query capabilities.
                 </p>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-3">
@@ -122,7 +122,7 @@ export default function TechnologyPage() {
                   FHIR Integration Layer
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 mb-6">
-                  SHIN consumes data from legacy clinical systems and modern APIs, normalizing everything into FHIR R4. Proprietary formats are automatically converted to standard, interoperable structures.
+                  SHIN consumes data from legacy clinical systems and modern APIs, normalizing priority workflows into HL7 FHIR R4-aligned resources. Proprietary formats are converted to standard, interoperable structures.
                 </p>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-3">

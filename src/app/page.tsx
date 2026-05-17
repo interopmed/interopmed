@@ -43,14 +43,14 @@ export default function HomePage() {
               <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 dark:border-slate-800 dark:bg-slate-900">
                 <span className="h-2 w-2 rounded-full bg-teal-500" />
                 <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-600 dark:text-slate-300">
-                  FHIR-native interoperability
+                  HL7 FHIR-native interoperability
                 </span>
               </div>
               <h1 className="max-w-4xl text-5xl font-bold leading-[1.02] text-slate-950 dark:text-white md:text-7xl">
                 Clinical data infrastructure for governed exchange.
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-                InteropMed helps healthcare teams normalize fragmented clinical data into secure, auditable, FHIR-aligned workflows across complex care networks.
+                InteropMed helps healthcare teams normalize fragmented clinical data into secure, auditable, HL7 FHIR-aligned workflows across complex care networks.
               </p>
               <div className="mt-9 flex flex-col gap-4 sm:flex-row">
                 <Link
@@ -68,7 +68,7 @@ export default function HomePage() {
               </div>
               <div className="mt-12 grid max-w-2xl gap-6 border-t border-slate-200 pt-8 dark:border-slate-800 sm:grid-cols-3">
                 {[
-                  { value: 'FHIR R4', label: 'native resource model' },
+                  { value: 'HL7 FHIR R4', label: 'native resource model' },
                   { value: '<50ms', label: 'target query latency' },
                   { value: 'Audit', label: 'ready operations' },
                 ].map((metric) => (

@@ -51,9 +51,14 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between border-t border-slate-200 pt-8 dark:border-slate-800 md:flex-row">
-          <p className="text-sm text-slate-600 dark:text-slate-400">
-            Copyright {currentYear} InteropMed. All rights reserved. Enterprise health data interoperability.
-          </p>
+          <div>
+            <p className="text-sm text-slate-600 dark:text-slate-400">
+              Copyright {currentYear} InteropMed. All rights reserved. Enterprise health data interoperability.
+            </p>
+            <p className="mt-3 max-w-3xl text-xs leading-5 text-slate-500 dark:text-slate-500">
+              FHIR is a registered trademark of Health Level Seven International. InteropMed is not affiliated with or endorsed by HL7. References to FHIR indicate standards alignment and implementation support.
+            </p>
+          </div>
           <div className="mt-4 flex gap-6 md:mt-0">
             <Link href="/account" className="text-sm text-slate-500 transition hover:text-teal-600 dark:text-slate-400 dark:hover:text-teal-400">
               Account

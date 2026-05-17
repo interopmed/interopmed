@@ -8,7 +8,7 @@ export const metadata = {
 
 const capabilities = [
   {
-    title: 'FHIR-native data layer',
+    title: 'HL7 FHIR-native data layer',
     body: 'Normalize clinical data into standards-aligned resources that downstream systems can consume with less custom translation.',
   },
   {
@@ -48,7 +48,7 @@ export default function ShinPlatformPage() {
                 A standards-aligned health interoperability network layer.
               </h1>
               <p className="text-lg leading-8 text-slate-600 dark:text-slate-300">
-                SHIN helps healthcare organizations move from fragmented point-to-point interfaces to governed, observable, FHIR-native clinical data infrastructure.
+                SHIN helps healthcare organizations move from fragmented point-to-point interfaces to governed, observable, HL7 FHIR-native clinical data infrastructure.
               </p>
             </div>
 

@@ -12,8 +12,8 @@ const frameworks = [
     body: 'InteropMed is designed for healthcare organizations that require administrative, technical, and organizational controls for regulated health data workflows.',
   },
   {
-    title: 'FHIR-first interoperability',
-    body: 'Our architecture emphasizes standards-aligned data exchange, validation, normalization, and traceable clinical information flows.',
+    title: 'HL7 FHIR alignment',
+    body: 'Our architecture emphasizes standards-aligned data exchange, validation, normalization, and traceable clinical information flows using HL7 FHIR-oriented workflows.',
   },
   {
     title: 'GDPR and privacy alignment',
@@ -50,8 +50,15 @@ const sections = [
   {
     title: 'Clinical interoperability standards',
     body: [
-      'InteropMed focuses on standards-based integration patterns, including FHIR-oriented workflows and compatibility with complex clinical networks.',
+      'InteropMed focuses on standards-based integration patterns, including HL7 FHIR-oriented workflows and compatibility with complex clinical networks.',
       'Standards alignment helps reduce custom point-to-point logic, improve semantic consistency, and make audit and review processes more dependable.',
+    ],
+  },
+  {
+    title: 'Standards and trademark notice',
+    body: [
+      'FHIR is a registered trademark of Health Level Seven International. InteropMed references FHIR to describe standards alignment, implementation support, and compatible interoperability workflows.',
+      'InteropMed is not affiliated with, sponsored by, or endorsed by HL7. Unless expressly stated in a signed agreement or formal certificate, InteropMed does not claim HL7 certification, HL7 approval, or official HL7 product status.',
     ],
   },
   {
