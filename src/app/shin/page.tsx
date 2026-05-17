@@ -48,7 +48,7 @@ export default function ShinPlatformPage() {
                 A standards-aligned health interoperability network layer.
               </h1>
               <p className="text-lg leading-8 text-slate-600 dark:text-slate-300">
-                SHIN helps healthcare organizations move from fragmented point-to-point interfaces to governed, observable, HL7 FHIR-native clinical data infrastructure.
+                InteropMed is an HL7 FHIR-aligned interoperability platform that helps healthcare organizations implement, govern, and operate clinical data exchange. SHIN is the platform layer that turns that operating model into governed, observable clinical data infrastructure.
               </p>
             </div>
 

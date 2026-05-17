@@ -15,9 +15,10 @@ export default function AboutPage() {
       <main>
         <HeroSection
           headline="Committed to Trusted Health Informatics Governance"
-          subheadline="InteropMed is built for health systems, digital health councils, and enterprise teams that require clear accountability, strong controls, and a standards-first platform."
-          cta="request-governance-brief"
+          subheadline="InteropMed is an HL7 FHIR-aligned interoperability platform that helps healthcare organizations implement, govern, and operate clinical data exchange."
+          cta="/contact"
           ctaText="Request Governance Brief"
+          ctaHref="/contact"
         />
 
         <CompanyPhilosophy />
@@ -37,8 +38,8 @@ export default function AboutPage() {
             <div className="grid gap-6 md:grid-cols-3">
               {[
                 {
-                  title: "FHIR R4",
-                  description: "Native support for the latest FHIR specification, ensuring semantic interoperability across systems."
+                  title: "HL7 FHIR R4",
+                  description: "Standards-aligned implementation support for semantic interoperability across systems."
                 },
                 {
                   title: "AIDH / CHIA",

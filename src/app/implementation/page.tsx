@@ -50,6 +50,21 @@ const buyers = [
   'Regional programs modernizing legacy interfaces into governed APIs',
 ]
 
+const freeLayer = [
+  'Open-source FHIR utilities',
+  'SDKs',
+  'Docs and examples',
+  'Demo connectors',
+]
+
+const premiumLayer = [
+  'SHIN Platform subscription',
+  'Managed connectors',
+  'Governance console',
+  'Implementation packages',
+  'Managed operations',
+]
+
 export default function ImplementationPage() {
   return (
     <>
@@ -65,7 +80,7 @@ export default function ImplementationPage() {
                 Buy the platform with a repeatable path to production.
               </h1>
               <p className="text-lg leading-8 text-slate-600 dark:text-slate-300">
-                InteropMed combines SHIN platform subscription, implementation packages, and ongoing operational support so teams can avoid one-off integration projects.
+                InteropMed is an HL7 FHIR-aligned interoperability platform that helps healthcare organizations implement, govern, and operate clinical data exchange through SHIN platform subscription, implementation packages, and ongoing operational support.
               </p>
             </div>
             <div className="rounded-lg border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900">
@@ -84,6 +99,68 @@ export default function ImplementationPage() {
         </section>
 
         <section className="bg-slate-50 py-16 dark:bg-slate-900">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="mb-10 max-w-3xl">
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-teal-600 dark:text-teal-400">
+                Free to premium
+              </p>
+              <h2 className="text-3xl font-bold text-slate-950 dark:text-white md:text-5xl">
+                A clear upgrade path from developer utility to production operations.
+              </h2>
+              <p className="mt-5 text-base leading-7 text-slate-600 dark:text-slate-300">
+                The free layer should attract technical users and validate demand. The premium layer should carry the real business value: reliability, governance, support, and accountable implementation.
+              </p>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-2">
+              <article className="rounded-lg border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-950 md:p-8">
+                <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">
+                  Free
+                </p>
+                <h3 className="mb-5 text-2xl font-bold text-slate-950 dark:text-white">
+                  Build and evaluate
+                </h3>
+                <ul className="space-y-3">
+                  {freeLayer.map((item) => (
+                    <li key={item} className="border-t border-slate-100 pt-3 text-sm leading-6 text-slate-600 dark:border-slate-800 dark:text-slate-300">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/open-source"
+                  className="mt-7 inline-block rounded-lg border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-900 transition hover:border-teal-500 hover:text-teal-700 dark:border-slate-700 dark:text-slate-100 dark:hover:border-teal-400 dark:hover:text-teal-300"
+                >
+                  View open-source layer
+                </Link>
+              </article>
+
+              <article className="rounded-lg border border-teal-200 bg-white p-6 dark:border-teal-900 dark:bg-slate-950 md:p-8">
+                <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-teal-600 dark:text-teal-400">
+                  Premium
+                </p>
+                <h3 className="mb-5 text-2xl font-bold text-slate-950 dark:text-white">
+                  Deploy and operate
+                </h3>
+                <ul className="space-y-3">
+                  {premiumLayer.map((item) => (
+                    <li key={item} className="border-t border-slate-100 pt-3 text-sm leading-6 text-slate-600 dark:border-slate-800 dark:text-slate-300">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/contact"
+                  className="mt-7 inline-block rounded-lg bg-gradient-to-r from-teal-500 to-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:shadow-lg hover:shadow-teal-500/25"
+                >
+                  Discuss premium fit
+                </Link>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-16 dark:bg-slate-950">
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-10 max-w-3xl">
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-teal-600 dark:text-teal-400">

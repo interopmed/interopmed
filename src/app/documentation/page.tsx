@@ -52,6 +52,44 @@ export default function DocumentationPage() {
               ))}
             </div>
 
+            <div className="mt-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+              <div className="rounded-lg border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-950 md:p-8">
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-teal-600 dark:text-teal-400">
+                  Free developer layer
+                </p>
+                <h2 className="mb-4 text-2xl font-bold text-slate-950 dark:text-white">
+                  Open-source FHIR utilities, SDKs, examples, and demo connectors.
+                </h2>
+                <p className="mb-6 text-base leading-7 text-slate-600 dark:text-slate-300">
+                  Use the free layer to experiment, prototype integrations, and understand InteropMed patterns before moving into SHIN deployment.
+                </p>
+                <Link
+                  href="/open-source"
+                  className="inline-block rounded-lg border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-900 transition hover:border-teal-500 hover:text-teal-700 dark:border-slate-700 dark:text-slate-100 dark:hover:border-teal-400 dark:hover:text-teal-300"
+                >
+                  Explore open source
+                </Link>
+              </div>
+
+              <div className="rounded-lg border border-teal-200 bg-white p-6 dark:border-teal-900 dark:bg-slate-950 md:p-8">
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-teal-600 dark:text-teal-400">
+                  Premium production layer
+                </p>
+                <h2 className="mb-4 text-2xl font-bold text-slate-950 dark:text-white">
+                  SHIN Platform, managed connectors, governance console, implementation packages, and managed operations.
+                </h2>
+                <p className="mb-6 text-base leading-7 text-slate-600 dark:text-slate-300">
+                  When the workflow needs reliability, auditability, change control, and support, move from reference material into a production implementation plan.
+                </p>
+                <Link
+                  href="/implementation"
+                  className="inline-block rounded-lg bg-gradient-to-r from-teal-500 to-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:shadow-lg hover:shadow-teal-500/25"
+                >
+                  View implementation model
+                </Link>
+              </div>
+            </div>
+
             <div className="mt-10 rounded-lg border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-950 md:p-8">
               <h2 className="mb-4 text-2xl font-bold text-slate-950 dark:text-white">
                 Need implementation support?

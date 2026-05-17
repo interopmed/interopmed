@@ -32,6 +32,21 @@ const commercialModel = [
   },
 ]
 
+const freeLayer = [
+  'Open-source FHIR utilities',
+  'SDKs',
+  'Docs and examples',
+  'Demo connectors',
+]
+
+const premiumLayer = [
+  'SHIN Platform subscription',
+  'Managed connectors',
+  'Governance console',
+  'Implementation packages',
+  'Managed operations',
+]
+
 export default function HomePage() {
   return (
     <>
@@ -50,7 +65,7 @@ export default function HomePage() {
                 Clinical data infrastructure for governed exchange.
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-                InteropMed helps healthcare teams normalize fragmented clinical data into secure, auditable, HL7 FHIR-aligned workflows across complex care networks.
+                InteropMed is an HL7 FHIR-aligned interoperability platform that helps healthcare organizations implement, govern, and operate clinical data exchange.
               </p>
               <div className="mt-9 flex flex-col gap-4 sm:flex-row">
                 <Link
@@ -146,6 +161,76 @@ export default function HomePage() {
         </section>
 
         <ProblemSolutionMatrix />
+
+        <section className="bg-slate-50 py-20 dark:bg-slate-900 md:py-28">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="mb-12 grid gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-end">
+              <div>
+                <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-teal-600 dark:text-teal-400">
+                  Adoption model
+                </p>
+                <h2 className="text-4xl font-bold text-slate-950 dark:text-white md:text-5xl">
+                  Start with useful FHIR building blocks. Scale into governed infrastructure.
+                </h2>
+              </div>
+              <p className="text-lg leading-8 text-slate-600 dark:text-slate-300">
+                InteropMed should make the early developer path easy while keeping the premium offer focused on production risk: connectors, governance, implementation, and managed operations.
+              </p>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-2">
+              <article className="rounded-lg border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-950 md:p-8">
+                <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">
+                  Free
+                </p>
+                <h3 className="mb-4 text-3xl font-bold text-slate-950 dark:text-white">
+                  Open-source FHIR utilities
+                </h3>
+                <p className="mb-6 text-base leading-7 text-slate-600 dark:text-slate-300">
+                  Give developers practical tools, SDKs, documentation, examples, and demo connectors that prove InteropMed understands real implementation work.
+                </p>
+                <ul className="space-y-3">
+                  {freeLayer.map((item) => (
+                    <li key={item} className="border-t border-slate-100 pt-3 text-sm font-medium text-slate-700 dark:border-slate-800 dark:text-slate-300">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/open-source"
+                  className="mt-7 inline-block rounded-lg border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-900 transition hover:border-teal-500 hover:text-teal-700 dark:border-slate-700 dark:text-slate-100 dark:hover:border-teal-400 dark:hover:text-teal-300"
+                >
+                  Explore free tools
+                </Link>
+              </article>
+
+              <article className="rounded-lg border border-teal-200 bg-white p-6 shadow-xl shadow-teal-500/10 dark:border-teal-900 dark:bg-slate-950 md:p-8">
+                <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-teal-600 dark:text-teal-400">
+                  Premium
+                </p>
+                <h3 className="mb-4 text-3xl font-bold text-slate-950 dark:text-white">
+                  SHIN production platform
+                </h3>
+                <p className="mb-6 text-base leading-7 text-slate-600 dark:text-slate-300">
+                  Convert qualified teams into subscription and services revenue when they need reliable exchange, managed connectors, governance, and operational accountability.
+                </p>
+                <ul className="space-y-3">
+                  {premiumLayer.map((item) => (
+                    <li key={item} className="border-t border-slate-100 pt-3 text-sm font-medium text-slate-700 dark:border-slate-800 dark:text-slate-300">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/implementation"
+                  className="mt-7 inline-block rounded-lg bg-gradient-to-r from-teal-500 to-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:shadow-lg hover:shadow-teal-500/25"
+                >
+                  View premium packages
+                </Link>
+              </article>
+            </div>
+          </div>
+        </section>
 
         <section className="bg-white py-20 dark:bg-slate-950 md:py-28">
           <div className="mx-auto max-w-7xl px-6">
