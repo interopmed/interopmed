@@ -3,6 +3,7 @@ import APIPlayground from '@/components/sections/APIPlayground'
 import HeroSection from '@/components/sections/HeroSection'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import SiteCTA from '@/components/SiteCTA'
 
 export const metadata = {
   title: 'Technology | InteropMed - SHIN Platform Architecture',
@@ -17,9 +18,10 @@ export default function TechnologyPage() {
         {/* Hero */}
         <HeroSection
           headline="Enterprise Architecture for Healthcare Data"
-          subheadline="SHIN represents a fundamental reimagining of health data middleware—built from the ground up with FHIR, PostgreSQL, and Python to handle the complexity of modern clinical networks."
-          cta="request-deep-dive"
+          subheadline="SHIN represents a fundamental reimagining of health data middleware, built from the ground up with FHIR, PostgreSQL, and Python to handle the complexity of modern clinical networks."
+          cta="/contact"
           ctaText="Download Architecture Whitepaper"
+          ctaHref="/contact"
         />
 
         {/* Architecture Deep Dive */}
@@ -45,7 +47,7 @@ export default function TechnologyPage() {
                   Data Layer: PostgreSQL + JSONB
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 mb-6">
-                  FHIR resources are deeply nested, unstructured data. Traditional relational schemas force painful normalization. SHIN uses PostgreSQL's JSONB to store nested FHIR resources while maintaining ACID guarantees and powerful query capabilities.
+                  FHIR resources are deeply nested, unstructured data. Traditional relational schemas force painful normalization. SHIN uses PostgreSQL&apos;s JSONB to store nested FHIR resources while maintaining ACID guarantees and powerful query capabilities.
                 </p>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-3">
@@ -70,7 +72,7 @@ export default function TechnologyPage() {
                   Logic Engine: Python & Django
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 mb-6">
-                  Healthcare requires complex validation logic, sophisticated access control, and integration pipelines. Python's ecosystem and Django's battle-tested ORM provide the foundation for SHIN's orchestration layer.
+                  Healthcare requires complex validation logic, sophisticated access control, and integration pipelines. Python&apos;s ecosystem and Django&apos;s battle-tested ORM provide the foundation for SHIN&apos;s orchestration layer.
                 </p>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-3">
@@ -186,6 +188,16 @@ export default function TechnologyPage() {
             </div>
           </div>
         </section>
+
+        <SiteCTA
+          eyebrow="Architecture review"
+          title="Need a technical review of your interoperability stack?"
+          description="Share your current integration landscape and we will help identify the strongest next step for FHIR-native modernization."
+          primaryHref="/contact"
+          primaryLabel="Request architecture review"
+          secondaryHref="/api-reference"
+          secondaryLabel="View API reference"
+        />
       </main>
       <Footer />
     </>

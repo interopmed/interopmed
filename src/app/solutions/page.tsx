@@ -1,6 +1,7 @@
 import HeroSection from '@/components/sections/HeroSection'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import SiteCTA from '@/components/SiteCTA'
 import ClinicalUseCases from '@/components/sections/ClinicalUseCases'
 import TransitionsOfCare from '@/components/sections/TransitionsOfCare'
 
@@ -17,8 +18,9 @@ export default function SolutionsPage() {
         <HeroSection
           headline="Clinical Solutions for High-Stakes Care"
           subheadline="InteropMed empowers medical directors with unified clinical context, live telemetry ingestion, and secure care transitions." 
-          cta="request-clinical-review"
+          cta="/contact"
           ctaText="Request a Clinical Review"
+          ctaHref="/contact"
         />
 
         <ClinicalUseCases />
@@ -53,6 +55,16 @@ export default function SolutionsPage() {
             </div>
           </div>
         </section>
+
+        <SiteCTA
+          eyebrow="Clinical review"
+          title="Map InteropMed to your clinical workflow."
+          description="Bring a care pathway, referral workflow, or telemetry use case and we will help scope the integration model."
+          primaryHref="/contact"
+          primaryLabel="Request clinical review"
+          secondaryHref="/shin"
+          secondaryLabel="Explore SHIN"
+        />
       </main>
       <Footer />
     </>

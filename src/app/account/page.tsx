@@ -107,7 +107,7 @@ export default async function AccountDashboardPage() {
               ))}
             </div>
 
-            <div className="mt-8 grid gap-6 lg:grid-cols-3">
+            <div className="mt-8 grid gap-6 lg:grid-cols-4">
               <Link
                 href="/account/insights"
                 className="rounded-lg border border-slate-200 bg-white p-6 transition hover:border-teal-400 dark:border-slate-800 dark:bg-slate-950 dark:hover:border-teal-500"
@@ -144,6 +144,19 @@ export default async function AccountDashboardPage() {
                 <h2 className="mb-3 text-xl font-bold text-slate-950 dark:text-white">Contact page</h2>
                 <p className="text-sm leading-6 text-slate-600 dark:text-slate-400">
                   Jump to the contact experience connected to account-driven content operations.
+                </p>
+              </Link>
+
+              <Link
+                href="/account/messages"
+                className="rounded-lg border border-slate-200 bg-white p-6 transition hover:border-teal-400 dark:border-slate-800 dark:bg-slate-950 dark:hover:border-teal-500"
+              >
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-teal-600 dark:text-teal-400">
+                  Leads
+                </p>
+                <h2 className="mb-3 text-xl font-bold text-slate-950 dark:text-white">Contact messages</h2>
+                <p className="text-sm leading-6 text-slate-600 dark:text-slate-400">
+                  Review recent contact form submissions saved from the website.
                 </p>
               </Link>
             </div>

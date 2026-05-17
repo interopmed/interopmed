@@ -1,9 +1,10 @@
+import Link from 'next/link'
+import Footer from '@/components/Footer'
+import Navbar from '@/components/Navbar'
+import SiteCTA from '@/components/SiteCTA'
 import HeroSection from '@/components/sections/HeroSection'
 import ProblemSolutionMatrix from '@/components/sections/ProblemSolutionMatrix'
-import SHINArchitecture from '@/components/sections/SHINArchitecture'
 import SecurityCompliance from '@/components/sections/SecurityCompliance'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 
 export const metadata = {
   title: 'InteropMed - Enterprise Health Data Interoperability',
@@ -15,62 +16,64 @@ export default function HomePage() {
     <>
       <Navbar />
       <main>
-        {/* Hero Section */}
         <HeroSection
           headline="Unifying Healthcare Data Layer by Layer."
           subheadline="InteropMed bridges the gap between legacy clinical databases and modern care frontiers with a FHIR-native, high-performance data ecosystem."
-          cta="Request a Technical Deep Dive"
+          cta="/contact"
           ctaText="Request a Technical Deep Dive"
+          ctaHref="/contact"
         />
 
-        {/* Problem & Solution Matrix */}
         <ProblemSolutionMatrix />
 
-        {/* SHIN Architecture Preview */}
-        <section className="py-20 md:py-32 bg-gradient-to-br from-slate-900 to-slate-950 dark:from-slate-950 dark:to-slate-900">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <section className="bg-gradient-to-br from-slate-900 to-slate-950 py-20 dark:from-slate-950 dark:to-slate-900 md:py-32">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">
                   SHIN: The Clinical Data Platform Redesigned
                 </h2>
-                <p className="text-lg text-slate-300 mb-8">
+                <p className="mb-8 text-lg text-slate-300">
                   Smart Health Interop Node (SHIN) is a purpose-built middleware platform delivering FHIR-native data processing at enterprise scale. Built from the ground up for clinicians, researchers, and IT architects who refuse to compromise on performance, security, or compliance.
                 </p>
-                <ul className="space-y-4 mb-8">
+                <ul className="mb-8 space-y-4">
                   {[
-                    "FHIR R4 native data model with full normalization",
-                    "PostgreSQL + JSONB for ACID compliance at NoSQL speed",
-                    "Python/Django REST Framework for production-grade APIs",
-                    "React Server Components for ultra-responsive clinical dashboards"
-                  ].map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <span className="text-teal-400 font-bold mt-1">✓</span>
+                    'FHIR R4 native data model with full normalization',
+                    'PostgreSQL + JSONB for ACID compliance at NoSQL speed',
+                    'Python/Django REST Framework for production-grade APIs',
+                    'React Server Components for ultra-responsive clinical dashboards',
+                  ].map((feature) => (
+                    <li key={feature} className="flex items-start gap-3">
+                      <span className="mt-1 font-bold text-teal-400">+</span>
                       <span className="text-slate-200">{feature}</span>
                     </li>
                   ))}
                 </ul>
-                <a href="/technology" className="inline-block px-8 py-3 bg-gradient-to-r from-teal-500 to-blue-600 text-white rounded-lg font-semibold hover:shadow-2xl hover:shadow-teal-500/30 transition-all duration-300 transform hover:scale-105">
-                  Explore SHIN Architecture →
-                </a>
+                <Link
+                  href="/technology"
+                  className="inline-block rounded-lg bg-gradient-to-r from-teal-500 to-blue-600 px-8 py-3 font-semibold text-white transition duration-300 hover:shadow-2xl hover:shadow-teal-500/30"
+                >
+                  Explore SHIN Architecture
+                </Link>
               </div>
-              <div className="hidden lg:block relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-blue-600/20 rounded-2xl blur-3xl" />
-                <div className="relative bg-slate-800/50 border border-slate-700 rounded-2xl p-8 backdrop-blur">
+
+              <div className="relative hidden lg:block">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-500/20 to-blue-600/20 blur-3xl" />
+                <div className="relative rounded-2xl border border-slate-700 bg-slate-800/50 p-8 backdrop-blur">
                   <div className="space-y-4 font-mono text-sm">
                     <div className="text-teal-400">{'>'} GET /fhir/Patient/pat-001</div>
-                    <div className="text-slate-400 ml-4">
-                      <div className="text-slate-500">{"{"}</div>
+                    <div className="ml-4 text-slate-400">
+                      <div className="text-slate-500">{'{'}</div>
                       <div className="ml-2">
-                        <div><span className="text-blue-400">"resourceType"</span>: <span className="text-green-400">"Patient"</span>,</div>
-                        <div><span className="text-blue-400">"id"</span>: <span className="text-green-400">"pat-001"</span>,</div>
-                        <div><span className="text-blue-400">"name"</span>: [<span className="text-green-400">"John Smith"</span>],</div>
-                        <div><span className="text-blue-400">"birthDate"</span>: <span className="text-green-400">"1974-12-25"</span>,</div>
-                        <div><span className="text-blue-400">"verified"</span>: <span className="text-green-400">true</span></div>
+                        <div><span className="text-blue-400">{'"resourceType"'}</span>: <span className="text-green-400">{'"Patient"'}</span>,</div>
+                        <div><span className="text-blue-400">{'"id"'}</span>: <span className="text-green-400">{'"pat-001"'}</span>,</div>
+                        <div><span className="text-blue-400">{'"name"'}</span>: [<span className="text-green-400">{'"John Smith"'}</span>],</div>
+                        <div><span className="text-blue-400">{'"birthDate"'}</span>: <span className="text-green-400">{'"1974-12-25"'}</span>,</div>
+                        <div><span className="text-blue-400">{'"verified"'}</span>: <span className="text-green-400">true</span></div>
                       </div>
-                      <div className="text-slate-500">{"}"}</div>
+                      <div className="text-slate-500">{'}'}</div>
                     </div>
-                    <div className="text-slate-500 text-xs">Response time: 47ms | Status: 200 OK</div>
+                    <div className="text-xs text-slate-500">Response time: 47ms | Status: 200 OK</div>
                   </div>
                 </div>
               </div>
@@ -78,28 +81,17 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Security & Compliance */}
         <SecurityCompliance />
 
-        {/* CTA Section */}
-        <section className="py-20 md:py-32 bg-white dark:bg-slate-950">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              Ready to Transform Your Data Infrastructure?
-            </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
-              Join healthcare enterprises using InteropMed to unify data, accelerate innovation, and deliver better patient outcomes.
-            </p>
-            <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <button className="px-8 py-3 bg-gradient-to-r from-teal-500 to-blue-600 text-white rounded-lg font-semibold hover:shadow-2xl hover:shadow-teal-500/30 transition-all duration-300 transform hover:scale-105">
-                Request Demo
-              </button>
-              <a href="/technology" className="px-8 py-3 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-100 rounded-lg font-semibold hover:border-teal-500 dark:hover:border-teal-400 hover:text-teal-600 dark:hover:text-teal-400 transition-all duration-300">
-                View Technical Specifications
-              </a>
-            </div>
-          </div>
-        </section>
+        <SiteCTA
+          eyebrow="Start planning"
+          title="Ready to transform your data infrastructure?"
+          description="Bring us your clinical data environment, integration constraints, and governance requirements. We will help frame the next practical step."
+          primaryHref="/contact"
+          primaryLabel="Request demo"
+          secondaryHref="/technology"
+          secondaryLabel="View technical specifications"
+        />
       </main>
       <Footer />
     </>
