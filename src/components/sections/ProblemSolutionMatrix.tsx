@@ -1,57 +1,53 @@
-export default function ProblemSolutionMatrix() {
-  const items = [
-    {
-      problem: "Vendor Lock-in",
-      solution: "FHIR-native architecture with open standards ensuring data portability",
-      icon: "🔒"
-    },
-    {
-      problem: "Data Fragmentation",
-      solution: "Unified data layer synthesizing disparate clinical systems in real-time",
-      icon: "📊"
-    },
-    {
-      problem: "Performance Bottlenecks",
-      solution: "PostgreSQL + JSONB delivering sub-50ms query latency at enterprise scale",
-      icon: "⚡"
-    },
-    {
-      problem: "Compliance Complexity",
-      solution: "Built-in audit trails, role-based access control, and encryption-at-rest",
-      icon: "✅"
-    },
-  ]
+const items = [
+  {
+    problem: 'Vendor lock-in',
+    solution: 'Standards-first architecture gives teams a portable clinical data contract instead of another proprietary integration layer.',
+  },
+  {
+    problem: 'Data fragmentation',
+    solution: 'SHIN normalizes patient, encounter, observation, and document context into a unified operating model.',
+  },
+  {
+    problem: 'Performance pressure',
+    solution: 'FHIR-aware storage and query patterns support responsive clinical dashboards and dependable API access.',
+  },
+  {
+    problem: 'Governance gaps',
+    solution: 'Access policy, validation, audit trails, and exception workflows are designed into the exchange layer.',
+  },
+]
 
+export default function ProblemSolutionMatrix() {
   return (
-    <section className="py-20 md:py-32 bg-white dark:bg-slate-950">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-            The Healthcare Data Ecosystem Redesigned
-          </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            We eliminate the fundamental inefficiencies that plague modern clinical networks.
+    <section className="bg-slate-50 py-20 dark:bg-slate-900 md:py-28">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-14 max-w-3xl">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-teal-600 dark:text-teal-400">
+            Why it matters
           </p>
+          <h2 className="text-4xl font-bold text-slate-950 dark:text-white md:text-5xl">
+            Replace brittle interfaces with governed clinical data infrastructure.
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {items.map((item, idx) => (
-            <div
-              key={idx}
-              className="p-8 border border-slate-200 dark:border-slate-800 rounded-lg hover:border-teal-500 dark:hover:border-teal-400 transition-all duration-300 hover:shadow-lg dark:hover:shadow-teal-500/10 group"
+        <div className="grid gap-5 md:grid-cols-2">
+          {items.map((item, index) => (
+            <article
+              key={item.problem}
+              className="rounded-lg border border-slate-200 bg-white p-6 transition hover:border-teal-400 dark:border-slate-800 dark:bg-slate-950 dark:hover:border-teal-500 md:p-8"
             >
-              <div className="flex items-start gap-4 mb-4">
-                <span className="text-3xl">{item.icon}</span>
-                <div>
-                  <h3 className="text-lg font-semibold text-red-600 dark:text-red-400 mb-2">
-                    Problem: {item.problem}
-                  </h3>
-                  <p className="text-slate-600 dark:text-slate-300">
-                    {item.solution}
-                  </p>
-                </div>
+              <div className="mb-5 flex items-center gap-4">
+                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal-50 font-mono text-sm font-bold text-teal-700 dark:bg-teal-950/50 dark:text-teal-300">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <h3 className="text-xl font-bold text-slate-950 dark:text-white">
+                  {item.problem}
+                </h3>
               </div>
-            </div>
+              <p className="text-base leading-7 text-slate-600 dark:text-slate-300">
+                {item.solution}
+              </p>
+            </article>
           ))}
         </div>
       </div>

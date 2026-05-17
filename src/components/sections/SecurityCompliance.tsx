@@ -1,82 +1,64 @@
+const features = [
+  {
+    title: 'Encrypted exchange',
+    description: 'Protect data in transit and at rest with deployment patterns designed for regulated health environments.',
+  },
+  {
+    title: 'Identity-aware access',
+    description: 'Support OAuth, OpenID Connect, role-based access, and service-level authorization strategies.',
+  },
+  {
+    title: 'Traceable operations',
+    description: 'Capture audit events for access, transformation, publication, configuration, and exception workflows.',
+  },
+  {
+    title: 'Compliance alignment',
+    description: 'Map platform controls to HIPAA, HITECH, GDPR, Privacy Act, and customer vendor-risk expectations.',
+  },
+]
+
 export default function SecurityCompliance() {
-  const features = [
-    {
-      title: "End-to-End Encryption",
-      description: "TLS 1.3 in-flight, AES-256-GCM at-rest with hardware-backed key management",
-      icon: "🔐"
-    },
-    {
-      title: "OAuth 2.0 & OpenID Connect",
-      description: "Industry-standard authentication protocols with zero-trust architecture",
-      icon: "🛡️"
-    },
-    {
-      title: "Role-Based Access Control",
-      description: "Fine-grained permission model enforced at every data access layer",
-      icon: "👥"
-    },
-    {
-      title: "Tamper-Proof Audit Logs",
-      description: "Immutable audit trails with cryptographic verification for compliance reporting",
-      icon: "📋"
-    },
-    {
-      title: "Compliance Frameworks",
-      description: "HIPAA, HITECH, GDPR, Privacy Act (Australia) fully aligned",
-      icon: "✅"
-    },
-    {
-      title: "Incident Response",
-      description: "24/7 security monitoring with automated anomaly detection and alerting",
-      icon: "🚨"
-    }
-  ]
-
   return (
-    <section className="py-20 md:py-32 bg-slate-50 dark:bg-slate-900">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-            Security & Compliance: Enterprise Grade
-          </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-            InteropMed operates under the strictest international health data governance standards.
-          </p>
+    <section className="bg-white py-20 dark:bg-slate-950 md:py-28">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <div>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-teal-600 dark:text-teal-400">
+              Trust layer
+            </p>
+            <h2 className="text-4xl font-bold text-slate-950 dark:text-white md:text-5xl">
+              Security and governance built into the data path.
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-300">
+              InteropMed treats compliance as operational design: policy, auditability, validation, and review workflows live close to the clinical data they protect.
+            </p>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            {features.map((feature) => (
+              <article
+                key={feature.title}
+                className="rounded-lg border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900"
+              >
+                <h3 className="mb-3 text-xl font-bold text-slate-950 dark:text-white">
+                  {feature.title}
+                </h3>
+                <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">
+                  {feature.description}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, idx) => (
-            <div
-              key={idx}
-              className="p-8 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-teal-500 dark:hover:border-teal-400 transition-all duration-300 hover:shadow-lg dark:hover:shadow-teal-500/10"
-            >
-              <div className="text-4xl mb-4">{feature.icon}</div>
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-slate-600 dark:text-slate-400 text-sm">
-                {feature.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Certifications */}
-        <div className="mt-16 p-8 md:p-12 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-blue-950/30 dark:to-teal-950/30 border border-blue-200 dark:border-blue-800 rounded-lg">
-          <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">
-            Compliance Certifications & Alignments
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { name: "HIPAA", badge: "Compliant" },
-              { name: "HITECH Act", badge: "Compliant" },
-              { name: "GDPR", badge: "Compliant" },
-              { name: "Privacy Act (AU)", badge: "Compliant" }
-            ].map((cert, idx) => (
-              <div key={idx} className="text-center">
-                <div className="text-3xl font-bold text-teal-600 dark:text-teal-400 mb-2">✓</div>
-                <p className="font-semibold text-slate-900 dark:text-white">{cert.name}</p>
-                <p className="text-sm text-slate-600 dark:text-slate-400">{cert.badge}</p>
+        <div className="mt-12 rounded-lg border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900 md:p-8">
+          <div className="grid gap-5 md:grid-cols-4">
+            {['HIPAA', 'HITECH', 'GDPR', 'Privacy Act AU'].map((name) => (
+              <div key={name} className="rounded-lg bg-white p-5 text-center dark:bg-slate-950">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-400">
+                  Aligned
+                </p>
+                <p className="mt-2 text-lg font-bold text-slate-950 dark:text-white">{name}</p>
               </div>
             ))}
           </div>
