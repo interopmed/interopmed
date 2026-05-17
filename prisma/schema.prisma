@@ -462,6 +462,25 @@ model ArticleComment {
   updatedAt         DateTime  @updatedAt
 }
 
+model ContactMessage {
+  id                String    @id @default(cuid())
+  firstName         String
+  lastName          String
+  email             String
+  organization      String?
+  topic             String
+  message           String    @db.Text
+  status            String    @default("new") // "new", "reviewed", "responded", "archived"
+  source            String    @default("contact_page")
+  ipAddress         String?
+  userAgent         String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  @@index([email])
+  @@index([status, createdAt])
+}
+
 // =====================
 // Partnerships & Relationships
 // =====================
