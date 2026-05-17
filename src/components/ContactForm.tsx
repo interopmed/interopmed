@@ -117,6 +117,8 @@ export default function ContactForm() {
           <option value="" disabled>Select a topic</option>
           <option>Request a demo</option>
           <option>Architecture review</option>
+          <option>Implementation package</option>
+          <option>Managed interoperability support</option>
           <option>Security and compliance</option>
           <option>Partnership conversation</option>
         </select>

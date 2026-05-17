@@ -25,6 +25,9 @@ export default function Navbar() {
           <Link href="/solutions" className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
             Solutions
           </Link>
+          <Link href="/implementation" className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+            Implementation
+          </Link>
           <Link href="/insights" className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
             Insights
           </Link>
@@ -63,6 +66,9 @@ export default function Navbar() {
             </Link>
             <Link href="/solutions" className="block text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400">
               Solutions
+            </Link>
+            <Link href="/implementation" className="block text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400">
+              Implementation
             </Link>
             <Link href="/insights" className="block text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400">
               Insights

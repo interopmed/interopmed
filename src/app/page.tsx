@@ -17,6 +17,21 @@ const flowSteps = [
   { step: 'Publish', detail: 'Serve clean clinical context to dashboards, APIs, and analytics.' },
 ]
 
+const commercialModel = [
+  {
+    title: 'Platform subscription',
+    detail: 'SHIN provides the reusable interoperability layer, API surface, governance controls, and operational foundation.',
+  },
+  {
+    title: 'Implementation package',
+    detail: 'Repeatable launch and production packages map workflows, configure integrations, and move teams toward go-live.',
+  },
+  {
+    title: 'Managed operations',
+    detail: 'Ongoing connector maintenance, mapping updates, exception review, and SLA-backed support keep exchanges healthy.',
+  },
+]
+
 export default function HomePage() {
   return (
     <>
@@ -39,16 +54,16 @@ export default function HomePage() {
               </p>
               <div className="mt-9 flex flex-col gap-4 sm:flex-row">
                 <Link
-                  href="/contact"
+                  href="/implementation"
                   className="rounded-lg bg-gradient-to-r from-teal-500 to-blue-600 px-7 py-3 text-center text-sm font-semibold text-white transition hover:shadow-lg hover:shadow-teal-500/25"
                 >
-                  Request architecture review
+                  See implementation packages
                 </Link>
                 <Link
-                  href="/shin"
+                  href="/contact"
                   className="rounded-lg border border-slate-300 px-7 py-3 text-center text-sm font-semibold text-slate-900 transition hover:border-teal-500 hover:text-teal-700 dark:border-slate-700 dark:text-slate-100 dark:hover:border-teal-400 dark:hover:text-teal-300"
                 >
-                  Explore SHIN platform
+                  Request architecture review
                 </Link>
               </div>
               <div className="mt-12 grid max-w-2xl gap-6 border-t border-slate-200 pt-8 dark:border-slate-800 sm:grid-cols-3">
@@ -132,6 +147,52 @@ export default function HomePage() {
 
         <ProblemSolutionMatrix />
 
+        <section className="bg-white py-20 dark:bg-slate-950 md:py-28">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="mb-12 grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+              <div>
+                <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-teal-600 dark:text-teal-400">
+                  How InteropMed is bought
+                </p>
+                <h2 className="text-4xl font-bold text-slate-950 dark:text-white md:text-5xl">
+                  A platform business, packaged for faster healthcare adoption.
+                </h2>
+              </div>
+              <p className="text-lg leading-8 text-slate-600 dark:text-slate-300">
+                InteropMed is designed to be purchased as repeatable infrastructure with expert implementation and recurring support, not as a one-off custom integration project.
+              </p>
+            </div>
+
+            <div className="grid gap-5 lg:grid-cols-3">
+              {commercialModel.map((item, index) => (
+                <article
+                  key={item.title}
+                  className="rounded-lg border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900 md:p-8"
+                >
+                  <p className="mb-5 font-mono text-sm font-semibold text-teal-600 dark:text-teal-400">
+                    {String(index + 1).padStart(2, '0')}
+                  </p>
+                  <h3 className="mb-3 text-2xl font-bold text-slate-950 dark:text-white">
+                    {item.title}
+                  </h3>
+                  <p className="text-base leading-7 text-slate-600 dark:text-slate-300">
+                    {item.detail}
+                  </p>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-8">
+              <Link
+                href="/implementation"
+                className="inline-block rounded-lg border border-slate-300 px-7 py-3 text-sm font-semibold text-slate-900 transition hover:border-teal-500 hover:text-teal-700 dark:border-slate-700 dark:text-slate-100 dark:hover:border-teal-400 dark:hover:text-teal-300"
+              >
+                View implementation model
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section className="bg-slate-950 py-20 text-white md:py-28">
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-12 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
@@ -176,11 +237,11 @@ export default function HomePage() {
         <SiteCTA
           eyebrow="Start planning"
           title="Ready to transform your data infrastructure?"
-          description="Bring us your clinical data environment, integration constraints, and governance requirements. We will help frame the next practical step."
-          primaryHref="/contact"
-          primaryLabel="Request demo"
-          secondaryHref="/technology"
-          secondaryLabel="View technical specifications"
+          description="Start with an architecture review, then move into the right SHIN implementation package for your first production workflow."
+          primaryHref="/implementation"
+          primaryLabel="View packages"
+          secondaryHref="/contact"
+          secondaryLabel="Request review"
         />
       </main>
       <Footer />

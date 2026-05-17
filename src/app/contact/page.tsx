@@ -26,10 +26,11 @@ const contactChannels = [
 ]
 
 const priorities = [
+  'Launch or Scale implementation package',
   'FHIR R4 implementation planning',
   'Legacy clinical system integration',
+  'Managed interoperability operations',
   'Security and compliance review',
-  'Clinical workflow modernization',
 ]
 
 export default function ContactPage() {
@@ -47,7 +48,7 @@ export default function ContactPage() {
                 Start a focused interoperability conversation.
               </h1>
               <p className="mb-8 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-                Tell us about your clinical data environment, integration constraints, and success criteria. We will route your request to the team best suited for the next step.
+                Tell us about your clinical data environment, target workflow, integration constraints, and success criteria. We will help identify the right SHIN package and next step.
               </p>
 
               <div className="grid gap-4 sm:grid-cols-2">
