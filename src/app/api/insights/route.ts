@@ -1,15 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { ACCOUNT_SESSION_COOKIE, isValidAccountSession } from '@/lib/account-auth'
 import { db } from '@/lib/db'
+import { slugify } from '@/lib/slugify'
 import { ApiResponse } from '@/types'
-
-function slugify(value: string) {
-  return value
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-}
 
 /**
  * GET /api/insights
@@ -85,6 +78,9 @@ export async function POST(request: NextRequest) {
       content,
       category: body.category || 'interoperability',
       tags: Array.isArray(body.tags) ? body.tags : [],
+      featuredImage: body.featuredImage || null,
+      metaDescription: body.metaDescription || body.excerpt || null,
+      metaKeywords: Array.isArray(body.metaKeywords) ? body.metaKeywords : [],
       status,
       publishedAt: status === 'published' ? new Date() : null,
       companyId,

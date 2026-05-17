@@ -1,18 +1,11 @@
 'use client'
 
 import { FormEvent, useState } from 'react'
+import { slugify } from '@/lib/slugify'
 
 type FormState = {
   status: 'idle' | 'submitting' | 'success' | 'error'
   message: string
-}
-
-function slugify(value: string) {
-  return value
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
 }
 
 export default function InsightCreateForm() {
@@ -39,6 +32,7 @@ export default function InsightCreateForm() {
         content: formData.get('content'),
         category: formData.get('category'),
         status: formData.get('status'),
+        featuredImage: formData.get('featuredImage'),
         companyId: formData.get('companyId'),
         authorId: formData.get('authorId'),
         tags,
@@ -145,6 +139,16 @@ export default function InsightCreateForm() {
           name="content"
           rows={10}
           className="w-full resize-y rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+        />
+      </label>
+
+      <label className="mt-5 block">
+        <span className="mb-2 block text-sm font-semibold text-slate-800 dark:text-slate-100">Featured Image URL</span>
+        <input
+          type="text"
+          name="featuredImage"
+          placeholder="/generated/insights/example.png"
+          className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
         />
       </label>
 

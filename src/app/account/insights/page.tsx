@@ -1,6 +1,8 @@
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import Footer from '@/components/Footer'
+import InsightAgentForm from '@/components/InsightAgentForm'
+import InsightChat from '@/components/InsightChat'
 import InsightCreateForm from '@/components/InsightCreateForm'
 import Navbar from '@/components/Navbar'
 import { ACCOUNT_SESSION_COOKIE, isValidAccountSession } from '@/lib/account-auth'
@@ -57,7 +59,11 @@ export default async function AccountInsightsPage() {
 
         <section className="bg-slate-50 py-16 dark:bg-slate-900">
           <div className="mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-[1.15fr_0.85fr]">
-            <InsightCreateForm />
+            <div className="space-y-8">
+              <InsightChat />
+              <InsightAgentForm />
+              <InsightCreateForm />
+            </div>
 
             <aside className="rounded-lg border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-950 md:p-8">
               <h2 className="mb-5 text-2xl font-bold text-slate-950 dark:text-white">

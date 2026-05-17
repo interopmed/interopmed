@@ -14,6 +14,7 @@ type InsightArticle = {
   author: string
   publishedAt: string
   readingTime: string
+  featuredImage?: string | null
   sections: {
     heading: string
     body: string[]
@@ -52,6 +53,7 @@ async function getDbInsight(slug: string): Promise<InsightArticle | null> {
       author: `${insight.author.firstName} ${insight.author.lastName}`,
       publishedAt: formatDate(insight.publishedAt || insight.createdAt),
       readingTime: getReadingTime(insight.content),
+      featuredImage: insight.featuredImage,
       sections: [
         {
           heading: 'Insight',
@@ -128,6 +130,13 @@ export default async function InsightPage({ params }: PageProps<'/insights/[slug
                 <span aria-hidden="true">/</span>
                 <span>{article.readingTime}</span>
               </div>
+              {article.featuredImage && (
+                <img
+                  src={article.featuredImage}
+                  alt=""
+                  className="mt-10 aspect-video w-full rounded-lg object-cover"
+                />
+              )}
             </div>
           </header>
 

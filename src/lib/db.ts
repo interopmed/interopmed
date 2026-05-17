@@ -153,6 +153,9 @@ export const db = {
       content: string
       category: string
       tags: string[]
+      featuredImage?: string | null
+      metaDescription?: string | null
+      metaKeywords?: string[]
       status: string
       publishedAt: Date | null
       companyId: string

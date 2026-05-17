@@ -18,6 +18,7 @@ type InsightCard = {
   category: string
   publishedAt: string
   readingTime: string
+  featuredImage?: string | null
 }
 
 function formatDate(value: Date | string | null) {
@@ -48,6 +49,7 @@ async function getPublishedInsights(): Promise<InsightCard[]> {
       category: insight.category,
       publishedAt: formatDate(insight.publishedAt || insight.createdAt),
       readingTime: getReadingTime(insight.content),
+      featuredImage: insight.featuredImage,
     }))
   } catch (error) {
     console.error('Error loading public insights:', error)
@@ -69,6 +71,7 @@ export default async function InsightsPage() {
       category: article.category,
       publishedAt: article.publishedAt,
       readingTime: article.readingTime,
+      featuredImage: null,
     })),
   ]
   const featuredArticle = insightCards[0]
@@ -99,16 +102,26 @@ export default async function InsightsPage() {
               href={`/insights/${featuredArticle.slug}`}
               className="group grid gap-8 rounded-lg border border-slate-200 bg-white p-6 transition hover:border-teal-400 hover:shadow-xl hover:shadow-slate-200/60 dark:border-slate-800 dark:bg-slate-950 dark:hover:border-teal-500 dark:hover:shadow-black/20 md:grid-cols-[0.8fr_1.2fr] md:p-8"
             >
-              <div className="flex min-h-56 flex-col justify-between rounded-lg bg-gradient-to-br from-slate-950 via-slate-900 to-teal-950 p-6 text-white">
-                <div>
-                  <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-teal-300">
-                    Featured insight
-                  </p>
-                  <div className="h-1 w-16 rounded-full bg-teal-400" />
-                </div>
-                <p className="font-mono text-sm text-slate-300">
-                  FHIR / Governance / Clinical Networks
-                </p>
+              <div className="min-h-56 overflow-hidden rounded-lg bg-gradient-to-br from-slate-950 via-slate-900 to-teal-950 text-white">
+                {featuredArticle.featuredImage ? (
+                  <img
+                    src={featuredArticle.featuredImage}
+                    alt=""
+                    className="h-full min-h-56 w-full object-cover"
+                  />
+                ) : (
+                  <div className="flex min-h-56 flex-col justify-between p-6">
+                    <div>
+                      <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-teal-300">
+                        Featured insight
+                      </p>
+                      <div className="h-1 w-16 rounded-full bg-teal-400" />
+                    </div>
+                    <p className="font-mono text-sm text-slate-300">
+                      FHIR / Governance / Clinical Networks
+                    </p>
+                  </div>
+                )}
               </div>
 
               <article>
@@ -138,6 +151,13 @@ export default async function InsightsPage() {
                   href={`/insights/${article.slug}`}
                   className="rounded-lg border border-slate-200 bg-white p-6 transition hover:border-teal-400 dark:border-slate-800 dark:bg-slate-950 dark:hover:border-teal-500"
                 >
+                  {article.featuredImage && (
+                    <img
+                      src={article.featuredImage}
+                      alt=""
+                      className="mb-5 aspect-video w-full rounded-lg object-cover"
+                    />
+                  )}
                   <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-teal-600 dark:text-teal-400">
                     {article.category}
                   </p>

@@ -11,6 +11,7 @@ export type BlogArticle = {
   author: string
   publishedAt: string
   readingTime: string
+  featuredImage?: string | null
   sections: ArticleSection[]
 }
 
