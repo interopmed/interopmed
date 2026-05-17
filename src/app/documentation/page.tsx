@@ -1,30 +1,12 @@
 import Link from 'next/link'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
+import { documentationGuides } from '@/lib/documentation'
 
 export const metadata = {
   title: 'Documentation | InteropMed',
   description: 'InteropMed documentation hub for platform setup, interoperability planning, and implementation guidance.',
 }
-
-const guides = [
-  {
-    title: 'Getting started',
-    description: 'Understand the SHIN platform model, core integration concepts, and the planning inputs needed before implementation.',
-  },
-  {
-    title: 'FHIR implementation',
-    description: 'Review resource mapping, validation expectations, terminology considerations, and rollout patterns for FHIR-native workflows.',
-  },
-  {
-    title: 'Security and access',
-    description: 'Plan authentication, authorization, environment boundaries, audit logging, and operational review practices.',
-  },
-  {
-    title: 'Operations',
-    description: 'Monitor integration health, manage exceptions, review data quality, and coordinate changes across clinical and technical teams.',
-  },
-]
 
 export default function DocumentationPage() {
   return (
@@ -48,18 +30,25 @@ export default function DocumentationPage() {
         <section className="bg-slate-50 py-16 dark:bg-slate-900">
           <div className="mx-auto max-w-7xl px-6">
             <div className="grid gap-6 md:grid-cols-2">
-              {guides.map((guide) => (
-                <article
+              {documentationGuides.map((guide) => (
+                <Link
                   key={guide.title}
+                  href={`/documentation/${guide.slug}`}
                   className="rounded-lg border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-950 md:p-8"
                 >
+                  <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-teal-600 dark:text-teal-400">
+                    {guide.category}
+                  </p>
                   <h2 className="mb-3 text-2xl font-bold text-slate-950 dark:text-white">
                     {guide.title}
                   </h2>
                   <p className="text-base leading-7 text-slate-600 dark:text-slate-300">
                     {guide.description}
                   </p>
-                </article>
+                  <span className="mt-5 inline-block text-sm font-semibold text-teal-600 dark:text-teal-400">
+                    Read guide
+                  </span>
+                </Link>
               ))}
             </div>
 
