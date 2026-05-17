@@ -1,5 +1,7 @@
 import { prisma } from './prisma'
 
+const INSIGHT_TYPE = 'insight'
+
 /**
  * Database utility functions for InteropMed
  * B2B Interoperability Standards Platform
@@ -106,6 +108,61 @@ export const db = {
           author: true,
         },
         orderBy: { publishedAt: 'desc' },
+      }),
+  },
+
+  // Insight queries use the Article model with type="insight"
+  insight: {
+    findMany: (options?: { status?: string; companyId?: string; take?: number }) =>
+      prisma.article.findMany({
+        where: {
+          type: INSIGHT_TYPE,
+          ...(options?.status ? { status: options.status } : {}),
+          ...(options?.companyId ? { companyId: options.companyId } : {}),
+        },
+        include: {
+          author: true,
+          company: true,
+        },
+        orderBy: { createdAt: 'desc' },
+        ...(options?.take ? { take: options.take } : {}),
+      }),
+
+    findPublishedBySlug: (slug: string) =>
+      prisma.article.findFirst({
+        where: {
+          slug,
+          type: INSIGHT_TYPE,
+          status: 'published',
+        },
+        include: { author: true },
+      }),
+
+    count: (status?: string) =>
+      prisma.article.count({
+        where: {
+          type: INSIGHT_TYPE,
+          ...(status ? { status } : {}),
+        },
+      }),
+
+    create: (data: {
+      title: string
+      slug: string
+      excerpt?: string | null
+      content: string
+      category: string
+      tags: string[]
+      status: string
+      publishedAt: Date | null
+      companyId: string
+      authorId: string
+    }) =>
+      prisma.article.create({
+        data: {
+          ...data,
+          type: INSIGHT_TYPE,
+        },
       }),
   },
 

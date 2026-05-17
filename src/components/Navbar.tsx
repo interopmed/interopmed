@@ -25,19 +25,22 @@ export default function Navbar() {
           <Link href="/solutions" className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
             Solutions
           </Link>
+          <Link href="/insights" className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+            Insights
+          </Link>
           <Link href="/about" className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
             About
           </Link>
-          <a href="#contact" className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+          <Link href="/contact" className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
             Contact
-          </a>
+          </Link>
         </div>
 
         {/* CTA Button */}
         <div className="hidden md:flex">
-          <button className="px-6 py-2 bg-gradient-to-r from-teal-500 to-blue-600 text-white rounded-lg text-sm font-semibold hover:shadow-lg hover:shadow-teal-500/25 transition-all duration-300 transform hover:scale-105">
+          <Link href="/contact" className="px-6 py-2 bg-gradient-to-r from-teal-500 to-blue-600 text-white rounded-lg text-sm font-semibold hover:shadow-lg hover:shadow-teal-500/25 transition-all duration-300 transform hover:scale-105">
             Request Demo
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -61,15 +64,18 @@ export default function Navbar() {
             <Link href="/solutions" className="block text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400">
               Solutions
             </Link>
+            <Link href="/insights" className="block text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400">
+              Insights
+            </Link>
             <Link href="/about" className="block text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400">
               About
             </Link>
-            <a href="#contact" className="block text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400">
+            <Link href="/contact" className="block text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400">
               Contact
-            </a>
-            <button className="w-full mt-4 px-6 py-2 bg-gradient-to-r from-teal-500 to-blue-600 text-white rounded-lg text-sm font-semibold">
+            </Link>
+            <Link href="/contact" className="block w-full mt-4 px-6 py-2 bg-gradient-to-r from-teal-500 to-blue-600 text-white rounded-lg text-sm font-semibold text-center">
               Request Demo
-            </button>
+            </Link>
           </div>
         </div>
       )}
