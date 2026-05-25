@@ -1,0 +1,435 @@
+{
+  "generated_at": "2026-05-25T23:26:15.756145",
+  "project_root": "D:\\Web Server\\GitHub\\interopmed",
+  "firm_root": "D:\\Web Server\\GitHub\\ai_software_firm",
+  "scan": {
+    "name": "interopmed",
+    "version": "0.1.0",
+    "scripts": {
+      "dev": "next dev",
+      "prebuild": "prisma generate",
+      "build": "next build",
+      "start": "next start",
+      "lint": "eslint . --ext .ts,.tsx",
+      "type-check": "tsc --noEmit"
+    },
+    "dependencies": {
+      "@prisma/adapter-pg": "^7.8.0",
+      "@prisma/client": "^7.8.0",
+      "next": "16.2.6",
+      "prisma": "^7.8.0",
+      "react": "19.2.4",
+      "react-dom": "19.2.4"
+    },
+    "dev_dependencies": {
+      "@tailwindcss/postcss": "^4",
+      "@types/node": "^20",
+      "@types/react": "^19",
+      "@types/react-dom": "^19",
+      "eslint": "^9",
+      "eslint-config-next": "16.2.6",
+      "tailwindcss": "^4",
+      "typescript": "^5"
+    },
+    "prisma_model_count": 18,
+    "prisma_models": [
+      "Company",
+      "Department",
+      "Team",
+      "Employee",
+      "TeamMember",
+      "Standard",
+      "StandardVersion",
+      "Product",
+      "Feature",
+      "UseCase",
+      "Testimonial",
+      "Documentation",
+      "ImplementationGuide",
+      "Article",
+      "ArticleComment",
+      "ContactMessage",
+      "Partnership",
+      "AuditLog"
+    ],
+    "api_routes": [
+      "src\\app\\api\\account\\login\\route.ts",
+      "src\\app\\api\\account\\logout\\route.ts",
+      "src\\app\\api\\contact\\route.ts",
+      "src\\app\\api\\health\\route.ts",
+      "src\\app\\api\\insights\\ai\\chat\\route.ts",
+      "src\\app\\api\\insights\\ai\\route.ts",
+      "src\\app\\api\\insights\\route.ts",
+      "src\\app\\api\\insights\\social\\route.ts",
+      "src\\app\\api\\patients\\[id]\\route.ts",
+      "src\\app\\api\\patients\\route.ts",
+      "src\\app\\api\\records\\[id]\\route.ts",
+      "src\\app\\api\\records\\patient\\[patientId]\\route.ts",
+      "src\\app\\api\\records\\route.ts"
+    ],
+    "pages": [
+      "src\\app\\about\\page.tsx",
+      "src\\app\\account\\insights\\page.tsx",
+      "src\\app\\account\\login\\page.tsx",
+      "src\\app\\account\\messages\\page.tsx",
+      "src\\app\\account\\page.tsx",
+      "src\\app\\api-reference\\page.tsx",
+      "src\\app\\compliance\\page.tsx",
+      "src\\app\\contact\\page.tsx",
+      "src\\app\\documentation\\[slug]\\page.tsx",
+      "src\\app\\documentation\\page.tsx",
+      "src\\app\\implementation\\page.tsx",
+      "src\\app\\insights\\[slug]\\page.tsx",
+      "src\\app\\insights\\page.tsx",
+      "src\\app\\open-source\\page.tsx",
+      "src\\app\\page.tsx",
+      "src\\app\\privacy\\page.tsx",
+      "src\\app\\shin\\page.tsx",
+      "src\\app\\solutions\\page.tsx",
+      "src\\app\\technology\\page.tsx",
+      "src\\app\\terms\\page.tsx"
+    ],
+    "components": [
+      "src\\components\\AccountLoginForm.tsx",
+      "src\\components\\AccountLogoutButton.tsx",
+      "src\\components\\ContactForm.tsx",
+      "src\\components\\Footer.tsx",
+      "src\\components\\InsightAgentForm.tsx",
+      "src\\components\\InsightChat.tsx",
+      "src\\components\\InsightCreateForm.tsx",
+      "src\\components\\Navbar.tsx",
+      "src\\components\\SiteCTA.tsx",
+      "src\\components\\sections\\APIPlayground.tsx",
+      "src\\components\\sections\\ClinicalUseCases.tsx",
+      "src\\components\\sections\\CompanyPhilosophy.tsx",
+      "src\\components\\sections\\HeroSection.tsx",
+      "src\\components\\sections\\ProblemSolutionMatrix.tsx",
+      "src\\components\\sections\\SHINArchitecture.tsx",
+      "src\\components\\sections\\SecurityCompliance.tsx",
+      "src\\components\\sections\\TransitionsOfCare.tsx"
+    ],
+    "lib_files": [
+      "src\\lib\\account-auth.ts",
+      "src\\lib\\articles.ts",
+      "src\\lib\\db.ts",
+      "src\\lib\\documentation.ts",
+      "src\\lib\\gemini-insights.ts",
+      "src\\lib\\prisma.ts",
+      "src\\lib\\slugify.ts",
+      "src\\lib\\social-posting.ts"
+    ]
+  },
+  "firm": {
+    "firm_status": {
+      "firm": {
+        "firm_name": "Universal AI Software Firm",
+        "created_at": "2026-05-25T23:26:13.066067",
+        "agents": {
+          "CEO_Manager": {
+            "name": "CEO_Manager",
+            "role": "CEO / Manager",
+            "model": "gpt-4",
+            "status": "idle",
+            "task_count": 0,
+            "dependencies": [],
+            "created_at": "2026-05-25T23:26:13.066067"
+          },
+          "Product_Manager": {
+            "name": "Product_Manager",
+            "role": "Product Agent",
+            "model": "gpt-4",
+            "status": "idle",
+            "task_count": 0,
+            "dependencies": [
+              "CEO_Manager"
+            ],
+            "created_at": "2026-05-25T23:26:13.066067"
+          },
+          "Architect": {
+            "name": "Architect",
+            "role": "Architect Agent",
+            "model": "gpt-4",
+            "status": "idle",
+            "task_count": 0,
+            "dependencies": [
+              "Product_Manager",
+              "CEO_Manager"
+            ],
+            "created_at": "2026-05-25T23:26:13.066067"
+          },
+          "Backend_Developer": {
+            "name": "Backend_Developer",
+            "role": "Backend Agent",
+            "model": "groq",
+            "status": "idle",
+            "task_count": 0,
+            "dependencies": [],
+            "created_at": "2026-05-25T23:26:13.066067"
+          },
+          "Frontend_Developer": {
+            "name": "Frontend_Developer",
+            "role": "Frontend Agent",
+            "model": "groq",
+            "status": "idle",
+            "task_count": 0,
+            "dependencies": [
+              "Backend_Developer"
+            ],
+            "created_at": "2026-05-25T23:26:13.066067"
+          },
+          "QA_Tester": {
+            "name": "QA_Tester",
+            "role": "QA Agent",
+            "model": "groq",
+            "status": "idle",
+            "task_count": 0,
+            "dependencies": [
+              "Backend_Developer",
+              "Frontend_Developer"
+            ],
+            "created_at": "2026-05-25T23:26:13.066067"
+          },
+          "Security_Officer": {
+            "name": "Security_Officer",
+            "role": "Security Agent",
+            "model": "gpt-4",
+            "status": "idle",
+            "task_count": 0,
+            "dependencies": [
+              "Architect",
+              "Backend_Developer",
+              "DevOps_Engineer"
+            ],
+            "created_at": "2026-05-25T23:26:13.066067"
+          },
+          "DevOps_Engineer": {
+            "name": "DevOps_Engineer",
+            "role": "DevOps Agent",
+            "model": "gpt-4",
+            "status": "idle",
+            "task_count": 0,
+            "dependencies": [
+              "Architect",
+              "Backend_Developer",
+              "Security_Officer"
+            ],
+            "created_at": "2026-05-25T23:26:13.066067"
+          },
+          "Documentation_Manager": {
+            "name": "Documentation_Manager",
+            "role": "Documentation Agent",
+            "model": "groq",
+            "status": "idle",
+            "task_count": 0,
+            "dependencies": [
+              "Backend_Developer",
+              "Frontend_Developer"
+            ],
+            "created_at": "2026-05-25T23:26:13.066067"
+          },
+          "Business_Analyst": {
+            "name": "Business_Analyst",
+            "role": "Business Agent",
+            "model": "gpt-4",
+            "status": "idle",
+            "task_count": 0,
+            "dependencies": [
+              "CEO_Manager",
+              "Product_Manager"
+            ],
+            "created_at": "2026-05-25T23:26:13.066067"
+          }
+        },
+        "projects": {
+          "InteropMed": {
+            "name": "InteropMed",
+            "description": "Healthcare interoperability platform built with Next.js and Prisma",
+            "status": "planning",
+            "required_agents": [
+              "CEO_Manager",
+              "Product_Manager",
+              "Architect",
+              "Backend_Developer",
+              "Frontend_Developer",
+              "QA_Tester",
+              "Security_Officer",
+              "DevOps_Engineer",
+              "Documentation_Manager",
+              "Business_Analyst"
+            ],
+            "created_at": "2026-05-25T23:26:13.066067",
+            "tasks": [],
+            "artifacts": []
+          }
+        },
+        "total_agents": 10,
+        "total_projects": 1
+      },
+      "communication": {
+        "total_messages": 0,
+        "unread_messages": 0,
+        "subscribers": 10,
+        "message_types": {
+          "request": 0,
+          "response": 0,
+          "notification": 0,
+          "query": 0,
+          "status_update": 0,
+          "alert": 0
+        }
+      },
+      "pending_tasks": 0
+    },
+    "agent_outputs": {
+      "product": {
+        "status": "completed",
+        "features": {
+          "feature_list": [
+            "FHIR-aligned API surface",
+            "Clinical data documentation",
+            "Patient and record API reliability",
+            "Security and compliance readiness",
+            "Implementation and conversion pages"
+          ],
+          "prioritization": "completed",
+          "estimation": "in_progress",
+          "acceptance_criteria": [
+            "well defined",
+            "testable",
+            "deployable"
+          ]
+        }
+      },
+      "roadmap": {
+        "status": "completed",
+        "roadmap": {
+          "phases": [
+            "Phase 1: MVP",
+            "Phase 2: MVP+",
+            "Phase 3: Full Release"
+          ],
+          "timeline": "6 weeks",
+          "milestones": [
+            "API hardening",
+            "FHIR docs",
+            "QA checks",
+            "launch review"
+          ]
+        }
+      },
+      "architecture": {
+        "status": "completed",
+        "architecture": {
+          "pattern": "Next.js App Router with Prisma data layer",
+          "components": [
+            "Next.js app",
+            "API routes",
+            "Prisma",
+            "PostgreSQL",
+            "FHIR docs"
+          ],
+          "layers": [
+            "API Layer",
+            "Business Logic",
+            "Data Layer",
+            "Cache Layer"
+          ],
+          "diagram": "architecture_diagram_v1.md"
+        }
+      },
+      "security": {
+        "status": "completed",
+        "compliance": {
+          "standards": [
+            "GDPR",
+            "CCPA",
+            "SOC 2"
+          ],
+          "privacy_policy": "updated",
+          "data_handling": "compliant",
+          "audit_log": "enabled",
+          "documentation": "complete"
+        }
+      },
+      "devops": {
+        "status": "completed",
+        "cicd_pipeline": {
+          "version_control": "GitHub",
+          "ci_tool": "GitHub Actions",
+          "cd_tool": "ArgoCD",
+          "stages": [
+            "Build",
+            "Test",
+            "Security Scan",
+            "Deploy",
+            "Smoke Test"
+          ],
+          "environments": [
+            "Dev",
+            "Staging",
+            "Production"
+          ],
+          "deployment_frequency": "multiple times per day"
+        }
+      },
+      "qa": {
+        "status": "completed",
+        "test_plan": {
+          "unit_tests": "required",
+          "integration_tests": "required",
+          "e2e_tests": "required",
+          "security_tests": "required",
+          "coverage_target": "95%"
+        }
+      },
+      "docs": {
+        "status": "completed",
+        "technical_documentation": {
+          "architecture": "documented",
+          "design_decisions": "recorded",
+          "deployment_guide": "documented",
+          "setup_instructions": "complete",
+          "security_configuration": "documented",
+          "troubleshooting": "included",
+          "location": "docs/technical"
+        }
+      }
+    },
+    "groq_result": {
+      "job_id": "interopmed_priority_review",
+      "worker": "InteropMed_Strategist",
+      "status": "completed",
+      "provider": "groq",
+      "model": "llama-3.3-70b-versatile",
+      "tokens_generated": 634,
+      "tokens_prompt": 481,
+      "tokens_total": 1115,
+      "output": "**Next Five Practical Engineering Priorities for InteropMed Project**\n\nBased on the provided project scan, the following priorities are identified to ensure launch readiness, FHIR-aligned API design, compliance, and effective utilization of Next.js and Prisma:\n\n### 1. **FHIR Alignment and API Design Review**\n* **Assumptions:** Existing API routes are not fully FHIR-compliant.\n* **Risks:** Incompatibility with FHIR standards may lead to integration issues with other healthcare systems.\n* **Implementation Steps:**\n\t1. Review existing API routes (`api_routes`) and Prisma models (`prisma_models`) for FHIR compliance.\n\t2. Identify and refactor non-compliant API endpoints to adhere to FHIR standards.\n\t3. Develop a comprehensive API design document outlining FHIR-aligned endpoints and data models.\n\n### 2. **Compliance and Security Auditing**\n* **Assumptions:** The project may not fully comply with relevant healthcare regulations (e.g., HIPAA).\n* **Risks:** Non-compliance may result in legal and financial consequences.\n* **Implementation Steps:**\n\t1. Conduct a thorough security audit to identify potential vulnerabilities.\n\t2. Review and implement necessary compliance measures (e.g., data encryption, access controls).\n\t3. Develop a compliance roadmap to ensure ongoing adherence to regulatory requirements.\n\n### 3. **Prisma Model Optimization and Data Modeling**\n* **Assumptions:** Existing Prisma models may not be optimized for performance or data integrity.\n* **Risks:** Inefficient data modeling may lead to performance issues and data inconsistencies.\n* **Implementation Steps:**\n\t1. Review and optimize Prisma models (`prisma_models`) for performance, data integrity, and FHIR compliance.\n\t2. Implement data validation and normalization techniques to ensure data consistency.\n\t3. Develop a data modeling guide to ensure consistent modeling practices across the project.\n\n### 4. **Next.js Performance Optimization**\n* **Assumptions:** The Next.js application may not be fully optimized for performance.\n* **Risks:** Poor performance may negatively impact user experience and application adoption.\n* **Implementation Steps:**\n\t1. Conduct a performance audit using tools like WebPageTest or Lighthouse.\n\t2. Implement performance optimization techniques (e.g., code splitting, caching, image optimization).\n\t3. Develop a performance monitoring and optimization plan to ensure ongoing performance improvements.\n\n### 5. **Launch Readiness and Deployment Planning**\n* **Assumptions:** The project may not be fully prepared for launch.\n* **Risks:** Insufficient launch planning may lead to deployment issues, downtime, or poor user experience.\n* **Implementation Steps:**\n\t1. Develop a comprehensive launch plan, including deployment scripts, monitoring, and rollback procedures.\n\t2. Conduct thorough testing (e.g., unit testing, integration testing, user acceptance testing).\n\t3. Establish a post-launch review process to identify areas for improvement and optimize the application for future updates.\n\nBy addressing these priorities, the InteropMed project can ensure a successful launch, maintain compliance with regulatory requirements, and provide a high-quality user experience.",
+      "completed_at": "2026-05-25T23:26:15.756145",
+      "processing_time_ms": 2272
+    }
+  },
+  "checks": [
+    {
+      "command": "C:\\Program Files\\nodejs\\npm.CMD run type-check",
+      "returncode": 0,
+      "stdout": "\n> interopmed@0.1.0 type-check\n> tsc --noEmit\n\n",
+      "stderr": "",
+      "duration_seconds": 2.234942
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\npm.CMD run lint",
+      "returncode": 0,
+      "stdout": "\n> interopmed@0.1.0 lint\n> eslint . --ext .ts,.tsx\n\n\nD:\\Web Server\\GitHub\\interopmed\\src\\app\\insights\\[slug]\\page.tsx\n  134:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element\n\nD:\\Web Server\\GitHub\\interopmed\\src\\app\\insights\\page.tsx\n  107:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element\n  155:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element\n\nD:\\Web Server\\GitHub\\interopmed\\src\\components\\InsightAgentForm.tsx\n  245:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element\n\n\u00e2\u0153\u2013 4 problems (0 errors, 4 warnings)\n\n",
+      "stderr": "",
+      "duration_seconds": 6.299007
+    }
+  ],
+  "recommendations": [
+    "Add request validation to API route POST handlers before writing to Prisma.",
+    "Document the core Prisma model groups so contributors can navigate the schema.",
+    "Keep product-specific agents and prompts inside InteropMed, not inside ai_software_firm.",
+    "Keep type-check as a required pre-merge check.",
+    "Use npm run build as the release gate after Prisma generation."
+  ]
+}

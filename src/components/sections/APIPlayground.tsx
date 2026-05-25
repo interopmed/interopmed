@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 
@@ -213,17 +213,18 @@ export default function APIPlayground() {
                 {JSON.stringify(response, null, 2)}
               </pre>
             ) : (
-              <p className="text-slate-500 italic">Click "Fetch FHIR Resource" to see live data...</p>
+              <p className="text-slate-500 italic">Click &quot;Fetch FHIR Resource&quot; to see live data...</p>
             )}
           </div>
         </div>
 
         <div className="mt-8 p-6 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg">
           <p className="text-sm text-slate-700 dark:text-slate-300">
-            <span className="font-semibold text-blue-600 dark:text-blue-400">Enterprise-Grade API:</span> SHIN's RESTful endpoints deliver validated FHIR R4 resources with full provenance tracking, access control enforcement, and sub-50ms latency. All requests are cryptographically signed and audit-logged.
+            <span className="font-semibold text-blue-600 dark:text-blue-400">Enterprise-Grade API:</span> SHIN&apos;s RESTful endpoints deliver validated FHIR R4 resources with full provenance tracking, access control enforcement, and sub-50ms latency. All requests are cryptographically signed and audit-logged.
           </p>
         </div>
       </div>
     </section>
   )
 }
+

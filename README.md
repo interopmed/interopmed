@@ -313,3 +313,26 @@ For issues and questions:
 ---
 
 **InteropMed** - Advancing Health Data Interoperability
+
+## AI Firm Workflow
+
+This project can be managed by the generic AI Software Firm in the sibling `ai_software_firm` folder.
+
+Run the firm workflow from this repository:
+
+```powershell
+& "C:\Users\Webdevix\AppData\Local\Programs\Python\Python312\python.exe" tools\firm_runner.py
+```
+
+Run with project checks:
+
+```powershell
+& "C:\Users\Webdevix\AppData\Local\Programs\Python\Python312\python.exe" tools\firm_runner.py --run-checks
+```
+
+Generated reports:
+
+- `.firm/latest_report.md`
+- `.firm/latest_report.json`
+
+Keep InteropMed-specific agents, prompts, and workflows in this repository. Keep reusable orchestration primitives in `ai_software_firm`.
